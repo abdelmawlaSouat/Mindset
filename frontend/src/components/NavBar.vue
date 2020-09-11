@@ -2,11 +2,13 @@
   <v-toolbar flat>
     <v-row align="center" justify="center" justify-sm="space-around">
       <v-toolbar-title>
-        <v-img src="../assets/full-logo.png" alt="Logo" width="200" ></v-img>
+        <v-img :src="require('@/assets/' + src)" :alt="alt" width="200" ></v-img>
       </v-toolbar-title>
       <div>
-        <v-btn v-show="!$vuetify.breakpoint.xsOnly" text large>Sign in</v-btn>
-        <v-btn v-show="!$vuetify.breakpoint.xsOnly" large color="info">Get Started</v-btn>
+        <v-btn v-for="(button, idx) in btns" :key="idx" v-bind="button.props"
+               v-show="!$vuetify.breakpoint.xsOnly">
+          {{ button.value }}
+        </v-btn>
       </div>
     </v-row>
   </v-toolbar>
@@ -14,10 +16,20 @@
 
 <script>
 export default {
-  name: 'NavBar'
+  name: 'NavBar',
+  props: {
+    src: {
+      type: String,
+      required: true
+    },
+    alt: {
+      type: String,
+      required: true
+    },
+    btns: {
+      type: Object,
+      required: true
+    }
+  }
 }
 </script>
-
-<style lang="css">
-
-</style>
