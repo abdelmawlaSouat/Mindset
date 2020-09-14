@@ -1,25 +1,56 @@
 <template>
 <div>
-    <v-btn large class="mx-2" @click.stop="dialog = true">Click</v-btn>
-     <v-dialog v-model="dialog" width="35%" overlay-opacity="0.9" overlay-color="white">
+     <v-dialog
+      v-model="isOpen"
+      :width="this.$vuetify.breakpoint.mdAndDown ? '60%' : '35%'"
+      :fullscreen="$vuetify.breakpoint.xsOnly ? true : false"
+      overlay-opacity="0.9"
+      overlay-color="white"
+      persistent
+     >
         <v-card height="100%">
-          <v-row  align="center" justify="center" class="ma-0">
-            <v-col cols="12" align="center">
+          <v-row
+            align="center" 
+            justify="center" 
+            class="ma-0"
+          >
+            <v-col
+              cols="12"
+              align="center">
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-icon @click="dialog = false" class="ma-2">mdi-close</v-icon>
+                    <v-icon 
+                      @click="emitCloseDialog" 
+                      class="ma-2"
+                    >
+                      mdi-close
+                    </v-icon>
                   </v-card-actions>
-                  <h3 class="text-h4" >Welcome Back.</h3>
+                  <h3 class="text-h4">
+                    {{ title }}
+                  </h3>
                   <v-card-text class="py-15">
-                    <v-col cols="8" lg="7">
-                      <v-btn outlined large color="grey darken-1" class="my-3"><v-icon left color="">{{ icons.mdiGoogle }}</v-icon> Sign in with Google</v-btn>
-                      <v-btn outlined large color="grey darken-1" class="my-3"><v-icon left>{{ icons.mdiGithub }}</v-icon> Sign in with Github</v-btn>
-                      <v-btn outlined large color="grey darken-1" class="my-3"><v-icon left>{{ icons.mdiEmail }}</v-icon> Sign in with email</v-btn>
-                      <div class="mt-15 text-body-1">
-                        <span>
-                          No account ?
-                          <span class="primary--text">Create one.</span>
-                        </span>
+                    <v-col
+                      class="d-flex flex-column align-center"
+                      cols="8" 
+                      lg="7" 
+                    >
+                      <v-btn
+                        v-bind="template.buttonsAttrs"
+                        v-for="(button, idx) in template.buttonsList" :key="idx"
+                      >
+                        <v-icon left>{{ button.icon }}</v-icon>
+                        {{ templateName }} with {{ button.value  }}
+                      </v-btn>
+                      <div class="mt-15 text-body-1 d-flex flex-column align-center">
+                        <span>{{ footerSpan }}</span>
+                        <v-btn
+                          @click="changeDialog"
+                          color="primary"
+                          text
+                        >
+                          {{ footerValBtn }}
+                        </v-btn>
                       </div>
                     </v-col>
                   </v-card-text>
@@ -31,18 +62,48 @@
 </template>
 
 <script>
-import { mdiGoogle, mdiGithub, mdiEmail } from '@mdi/js'
-
 export default {
   name: 'AuthenticationDialog',
-  data () {
-    return {
-      icons: {
-        mdiGoogle,
-        mdiGithub,
-        mdiEmail
-      },
-      dialog: false
+  props: {
+    isOpen: {
+      type: Boolean,
+      required: true
+    },
+    template: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    },
+    templatesList: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
+  computed: {
+    title () {
+      return this.templatesList[this.template.name] ? this.templatesList[this.template.name].title : ''
+    },
+    templateName () {
+      return this.templatesList[this.template.name] ? this.templatesList[this.template.name].name : ''
+    },
+    footerSpan () {
+      return this.templatesList[this.template.name] ? this.templatesList[this.template.name].footerDiv.span : ''
+    },
+    footerValBtn () {
+      return this.templatesList[this.template.name] ? this.templatesList[this.template.name].footerDiv.btnVal : ''
+    },
+  },
+  methods: {
+    emitCloseDialog () {
+      this.$emit('close-dialog', {
+        isOpen: this.openDialog
+      })
+    },
+    changeDialog () {
+      this.template.name = (this.template.name === 'signUp') ? 'signIn' : 'signUp'
     }
   }
 }

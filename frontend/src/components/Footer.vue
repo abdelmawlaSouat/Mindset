@@ -1,8 +1,10 @@
 <template>
   <v-footer v-bind="attrs">
-      <v-row justify="center" >
-          <span class="py-5">{{ value }}</span>
-      </v-row>
+    <v-row justify="center">
+      <span class="py-5 text-center text-caption">
+        {{ value }}
+      </span>
+    </v-row>
     </v-footer>
 </template>
 

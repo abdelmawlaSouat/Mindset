@@ -2,11 +2,19 @@
   <v-toolbar flat>
     <v-row align="center" justify="center" justify-sm="space-around">
       <v-toolbar-title>
-        <v-img :src="require('@/assets/' + src)" :alt="alt" width="200" ></v-img>
+        <v-img
+          :src="require('@/assets/' + src)"
+          :alt="alt"
+          width="200"
+        ></v-img>
       </v-toolbar-title>
       <div>
-        <v-btn v-for="(button, idx) in btns" :key="idx" v-bind="button.props"
-               v-show="!$vuetify.breakpoint.xsOnly">
+        <v-btn
+          v-for="(button, idx) in buttonsList" :key="idx"
+          v-bind="button.attrs"
+          v-show="!$vuetify.breakpoint.xsOnly"
+          @click="emitOpenDialog(button)"
+        >
           {{ button.value }}
         </v-btn>
       </div>
@@ -26,9 +34,16 @@ export default {
       type: String,
       required: true
     },
-    btns: {
+    buttonsList: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    emitOpenDialog (button) {
+      this.$emit('open-dialog', {
+        name: button.name
+      })
     }
   }
 }
