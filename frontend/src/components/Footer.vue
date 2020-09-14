@@ -1,13 +1,22 @@
 <template>
-  <v-footer dark absolute>
-      <v-row justify="center" >
-          <span class="py-5">Copyright © 2020 Mindset. Tous droits réservés.</span>
-      </v-row>
+  <v-footer v-bind="attrs">
+    <v-row justify="center">
+      <span class="py-5 text-center text-caption">
+        {{ value }}
+      </span>
+    </v-row>
     </v-footer>
 </template>
 
 <script>
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  props: {
+    value: {
+      type: String,
+      required: true
+    },
+    attrs: Object
+  }
 }
 </script>
