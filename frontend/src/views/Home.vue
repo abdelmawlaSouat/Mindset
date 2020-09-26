@@ -14,10 +14,10 @@
     />
     <v-row
       align="center"
-      justify="center" 
+      justify="center"
       style="height:82vh"
     >
-      <v-col 
+      <v-col
         align="center"
         xs="10" sm="8" lg="6"
       >
@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { mdiGoogle, mdiGithub, mdiEmail } from '@mdi/js'
+import { mdiFacebook, mdiGoogle, mdiEmail } from '@mdi/js'
 import NavBar from '@/components/NavBar.vue'
 import AuthenticationDialog from '@/components/AuthenticationDialog.vue'
 import Footer from '@/components/Footer.vue'
@@ -99,10 +99,10 @@ export default {
               value: 'Google',
               icon: mdiGoogle
             },
-            github: {
-              name: 'github',
-              value: 'Github',
-              icon: mdiGithub
+            facebook: {
+              name: 'facebook',
+              value: 'Facebook',
+              icon: mdiFacebook
             },
             email: {
               name: 'email',
