@@ -1,3 +1,12 @@
+/*
+ * User.js
+ *
+ * Author: Abdelmawla Souat (abdelmawla.souat@gmail.com)
+ * Created on 2020/9/28 18:02:59
+ *
+ * Copyright (c) 2020 Shuriken
+ */
+
 const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
@@ -8,19 +17,18 @@ const UserSchema = new mongoose.Schema({
     type: String
   },
   mailToken: {
-    type: String
+    type: String,
+    default: ''
   },
   displayName: {
     type: String,
-    // required: true
+    required: true
   },
   givenName: {
-    type: String,
-    // required: true
+    type: String
   },
   familyName: {
-    type: String,
-    // required: true
+    type: String
   },
   email: {
     type: String
@@ -30,9 +38,8 @@ const UserSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now,
-  },
-
+    default: Date.now
+  }
 })
 
 module.exports = mongoose.model('User', UserSchema)
