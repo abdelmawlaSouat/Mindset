@@ -7,7 +7,13 @@ Vue.use(Vuex, axios)
 export default new Vuex.Store({
   state: {
     authenticated: false,
-    user: {}
+    user: {},
+    dialog: {
+      authenticationType: '',
+      cardName: 'card-authentications-list',
+      isOpen: false,
+      userEmail: ''
+    }
   },
   mutations: {
   },
@@ -19,7 +25,6 @@ export default new Vuex.Store({
       }).then(res => {
         console.log(res.data)
         if (res.data.authenticated) {
-          console.log(res.data.authenticated)
           this.state.authenticated = res.data.authenticated
           this.state.user = res.data.user
         }

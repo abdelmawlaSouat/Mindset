@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <SessionFooter
-      v-if="!this.$store.state.authenticated"
+      v-if="this.$store.state.authenticated"
       :imgSrc="img"
       :text="text"
     />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import AuthenticationFooter from './AuthenticationFooter'
+import AuthenticationFooter from './authentication/AuthenticationFooter'
 import SessionFooter from './SessionFooter'
 
 export default {

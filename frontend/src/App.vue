@@ -18,9 +18,6 @@ export default {
     TheNavBar,
     TheFooter
   },
-  data: () => ({
-    //
-  }),
   mounted () {
     this.$store.dispatch('userAuth')
   }

@@ -10,10 +10,11 @@
       </v-toolbar-title>
       <div>
         <v-btn
-          v-for="(button, idx) in buttonsList" :key="idx"
+          v-for="(button, idx) in buttonsList"
+          :key="idx"
           v-bind="button.attrs"
           v-show="!$vuetify.breakpoint.xsOnly"
-          @click="emitOpenDialog(button)"
+          @click="openDialog(button)"
         >
           {{ button.value }}
         </v-btn>
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'AuthenticationNav',
   props: {
@@ -33,17 +35,35 @@ export default {
     alt: {
       type: String,
       required: true
-    },
-    buttonsList: {
-      type: Object,
-      required: true
+    }
+  },
+  data () {
+    return {
+      buttonsList: {
+        signInBtn: {
+          name: 'signIn',
+          value: 'Sign in',
+          attrs: {
+            text: true,
+            large: true,
+            class: 'mx-2'
+          }
+        },
+        signUpBtn: {
+          name: 'signUp',
+          value: 'Get Started',
+          attrs: {
+            large: true,
+            color: 'info'
+          }
+        }
+      }
     }
   },
   methods: {
-    emitOpenDialog (button) {
-      this.$emit('open-dialog', {
-        name: button.name
-      })
+    openDialog (button) {
+      this.$store.state.dialog.isOpen = true
+      this.$store.state.dialog.authenticationType = button.name
     }
   }
 }
