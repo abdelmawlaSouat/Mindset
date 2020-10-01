@@ -1,8 +1,8 @@
 <template>
-  <v-footer v-bind="attrs">
+  <v-footer absolute color="white">
     <v-row justify="center">
       <span class="py-5 text-center text-caption">
-        {{ value }}
+        {{ text }}
       </span>
     </v-row>
     </v-footer>
@@ -10,13 +10,12 @@
 
 <script>
 export default {
-  name: 'Footer',
+  name: 'AuthenticationFooter',
   props: {
-    value: {
+    text: {
       type: String,
       required: true
-    },
-    attrs: Object
+    }
   }
 }
 </script>

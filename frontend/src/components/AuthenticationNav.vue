@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'NavBar',
+  name: 'AuthenticationNav',
   props: {
     src: {
       type: String,

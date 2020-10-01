@@ -1,40 +1,28 @@
 <template>
   <v-app>
     <v-main>
+      <TheNavBar />
       <router-view></router-view>
+      <TheFooter />
     </v-main>
   </v-app>
 </template>
 
 <script>
+import TheNavBar from '@/components/TheNavBar.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 export default {
   name: 'App',
-
   components: {
-    //
+    TheNavBar,
+    TheFooter
   },
-
   data: () => ({
     //
   }),
-  methods: {
-    // async secureRedirection () {
-    //   await this.$store.dispatch('userAuth')
-    // }
-  },
   mounted () {
-    this.$store.dispatch('userAuth').then(() => {
-      if (this.$store.state.authenticated) {
-        this.$router.push('session')
-      }
-    }).catch(err => console.log(err))
-    // this.secureRedirection().then(() => {
-    //   if (this.$store.state.authenticated) {
-    //     this.$router.push('session')
-    //   }
-    // })
-    // console.log(this.$store.state.authenticated)
+    this.$store.dispatch('userAuth')
   }
 }
 </script>
