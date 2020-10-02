@@ -1,5 +1,9 @@
 <template>
-  <SessionNav v-if="this.$store.state.authenticated" />
+  <SessionNav
+    v-if="this.$store.state.authenticated"
+    :src="logo.src"
+    :alt="logo.alt"
+  />
   <AuthenticationNav
     v-else
     :src="logo.src"
