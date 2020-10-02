@@ -2,7 +2,9 @@
   <v-app>
     <v-main>
       <TheNavBar />
-      <router-view></router-view>
+      <div style="min-height: 74vh">
+        <router-view></router-view>
+      </div>
       <TheFooter />
     </v-main>
   </v-app>

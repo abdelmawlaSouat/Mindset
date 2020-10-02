@@ -105,7 +105,6 @@ export default {
     },
     oAuth (name) {
       if (name === 'email') {
-        console.log(`Authentication with ${name}`)
         this.$store.state.dialog.cardName = 'card-email-1'
       } else {
         window.location.href = `http://localhost:3000/api/auth/${name}`

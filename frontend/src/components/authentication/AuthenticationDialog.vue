@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-dialog
-      v-model="this.$store.state.dialog.isOpen"
+      v-model="dialog.isOpen"
       :width="$vuetify.breakpoint.mdAndDown ? '60%' : '35%'"
       :fullscreen="$vuetify.breakpoint.xsOnly ? true : false"
       overlay-opacity="0.9"
@@ -10,13 +10,13 @@
     >
       <AuthenticationListCard
         :templates="authenticationsListTemplates"
-        v-show="this.$store.state.dialog.cardName === 'card-authentications-list'"
+        v-show="dialog.cardName === 'card-authentications-list'"
       />
       <AuthenticationEmailCardOne
-        v-show="this.$store.state.dialog.cardName === 'card-email-1'"
+        v-show="dialog.cardName === 'card-email-1'"
       />
       <AuthenticationEmailCardTwo
-        v-show="this.$store.state.dialog.cardName === 'card-email-2'"
+        v-show="dialog.cardName === 'card-email-2'"
       />
     </v-dialog>
   </div>
@@ -54,6 +54,11 @@ export default {
           }
         }
       }
+    }
+  },
+  computed: {
+    dialog () {
+      return this.$store.state.dialog
     }
   }
 }
