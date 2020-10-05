@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import AuthenticationNav from './authentication/AuthenticationNav'
-import SessionNav from './SessionNav'
+import AuthenticationNav from './AuthenticationNav'
+import SessionNav from './session-nav/SessionNav'
 
 export default {
   name: 'TheNavBar',

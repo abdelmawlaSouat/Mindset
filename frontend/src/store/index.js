@@ -1,3 +1,12 @@
+/*
+ * index.js
+ *
+ * Author: Abdelmawla Souat (abdelmawla.souat@gmail.com)
+ * Created on 2020/10/5 13:08:45
+ *
+ * Copyright (c) 2020 Shuriken
+ */
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'

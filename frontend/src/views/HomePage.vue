@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Authentication from './Authentication'
-import Articles from './Articles'
+import Authentication from './AuthenticationPage'
+import Articles from './ArticlesPage'
 
 export default {
   name: 'Home',

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import AuthenticationFooter from './authentication/AuthenticationFooter'
+import AuthenticationFooter from './AuthenticationFooter'
 import SessionFooter from './SessionFooter'
 
 export default {

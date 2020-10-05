@@ -1,7 +1,16 @@
+/*
+ * index.js
+ *
+ * Author: Abdelmawla Souat (abdelmawla.souat@gmail.com)
+ * Created on 2020/10/5 13:08:25
+ *
+ * Copyright (c) 2020 Shuriken
+ */
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Profile from '../views/Profile.vue'
+import Home from '../views/HomePage.vue'
+import Profile from '../views/ProfilePage.vue'
 
 Vue.use(VueRouter)
 

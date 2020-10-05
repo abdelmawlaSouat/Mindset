@@ -22,16 +22,18 @@
           style="border-bottom: 1px solid rgba(230, 230, 230, 1)"
           class="pa-5 mb-2"
         >
-          <v-avatar>
-            <v-img
-              v-if="user.picture"
-              :src="user.picture"
-              :alt="user.displayName"
-              size="50"
-            ></v-img>
-            <span v-else>ZE</span>
-          </v-avatar>
-          <span class="ml-2">{{ user.displayName }}</span>
+          <router-link to="profile">
+            <v-avatar>
+              <v-img
+                v-if="user.picture"
+                :src="user.picture"
+                :alt="user.displayName"
+                size="50"
+              ></v-img>
+              <span v-else>ZE</span>
+            </v-avatar>
+            <span class="ml-2" style="color: black">{{ user.displayName }}</span>
+          </router-link>
         </v-list-item>
 
         <v-list-item
@@ -96,7 +98,6 @@ export default {
   }
 .item-title {
   color: grey;
-  /* padding-right: 1rem; */
   padding-left: 1rem;
   font-size: 0.9rem;
 }

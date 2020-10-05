@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import AuthenticationDialog from '@/components/authentication/AuthenticationDialog.vue'
+import AuthenticationDialog from '@/components/dialog/authentication-dialog/AuthenticationDialog.vue'
 
 export default {
   name: 'Authentication',
