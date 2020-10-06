@@ -11,6 +11,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/HomePage.vue'
 import Profile from '../views/ProfilePage.vue'
+import Settings from '../views/SettingsPage.vue'
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: Settings
   },
   {
     path: '/profile',
