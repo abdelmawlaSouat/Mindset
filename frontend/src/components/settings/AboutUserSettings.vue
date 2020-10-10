@@ -194,8 +194,6 @@ export default {
         .post('http://localhost:3000/api/session/user/update', data)
         .then((res) => {
           this.$store.state.user = res.data.user
-          console.log(res.data.user)
-          console.log(this.user)
         })
         .catch((err) => console.log(err))
     },

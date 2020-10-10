@@ -13,6 +13,8 @@ const sessionCtrl = new Session()
 
 module.exports = (router) => {
 	router.post('/user/update', sessionCtrl.updateField)
+	router.post('/user/deleteAll', sessionCtrl.deleteUser)
+	router.get('/user/logout', sessionCtrl.logout)
 
 	return router
 }

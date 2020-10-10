@@ -87,6 +87,7 @@ export default {
   methods: {
     logout () {
       console.log('Logout')
+      window.location.href = 'http://localhost:3000/api/session/user/logout'
     }
   }
 }

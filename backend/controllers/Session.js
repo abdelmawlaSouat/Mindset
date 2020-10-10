@@ -44,6 +44,19 @@ class Session {
    * @param  {object} res
    * @param  {object} next
    */
+  deleteUser(req, res, next) {
+    User.deleteOne({ _id: req.body.id })
+      .then(() => res.send({
+        status: 200,
+        success: true,
+      })).catch(err => console.log(err))
+  }
+
+  /**
+   * @param  {object} req
+   * @param  {object} res
+   * @param  {object} next
+   */
   logout(req, res, next) {
     req.logout()
     res.redirect(process.env.CLIENT_HOME_PAGE_URL)
