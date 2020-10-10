@@ -35,7 +35,7 @@
 import AuthenticationDialog from '@/components/dialog/authentication-dialog/AuthenticationDialog.vue'
 
 export default {
-  name: 'Authentication',
+  name: 'AuthenticationPage',
   components: {
     AuthenticationDialog
   },

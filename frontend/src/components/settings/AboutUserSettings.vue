@@ -32,7 +32,7 @@
             outlined
             color="success"
             class="mr-2"
-            @click="saveField(name.value)"
+            @click="saveField({ 'displayName': name.value })"
           >
           Save
           </v-btn>
@@ -50,7 +50,7 @@
           small
           outlined
           color="grey"
-          @click="editField(name)"
+          @click="name.editing = !name.editing"
         >
           Edit
         </v-btn>
@@ -84,7 +84,7 @@
             outlined
             color="success"
             class="mr-2"
-            @click="saveField(bio.value)"
+            @click="saveField({ 'bio': bio.value })"
           >
           Save
           </v-btn>
@@ -102,7 +102,7 @@
           small
           outlined
           color="grey"
-          @click="editField(bio)"
+          @click="bio.editing = !bio.editing"
         >
           Edit
         </v-btn>
@@ -129,7 +129,7 @@
             outlined
             color="success"
             class="mr-2"
-            @click="saveField(avatar.value)"
+            @click="saveField({ 'avatar': avatar.value })"
           >
           Save
           </v-btn>
@@ -147,7 +147,7 @@
           small
           outlined
           color="grey"
-          @click="editField(avatar)"
+          @click="avatar.editing = !avatar.editing"
         >
           Edit
         </v-btn>
@@ -163,7 +163,7 @@ export default {
   data () {
     return {
       name: {
-        value: 'Souat Abdelmawla',
+        value: '',
         editing: false,
         attrs: {
           placeholder: 'Name',
@@ -188,17 +188,37 @@ export default {
     }
   },
   methods: {
-    editField (field) {
-      field.editing = !field.editing
-      if (field.attrs) {
-        field.attrs.readonly = false
-        field.attrs.autofocus = true
-      }
-    },
     saveField (field) {
-      console.log(field)
+      const data = { id: this.user.id, field }
+      this.axios
+        .post('http://localhost:3000/api/session/user/update', data)
+        .then((res) => {
+          this.$store.state.user = res.data.user
+          console.log(res.data.user)
+          console.log(this.user)
+        })
+        .catch((err) => console.log(err))
+    },
+    setUserData (user) {
+      this.name.value = user.displayName
+      this.bio.value = user.bio
+      this.avatar.value = user.avatar
     }
-
+  },
+  mounted () {
+    this.setUserData(this.user)
+  },
+  computed: {
+    user () {
+      return this.$store.state.user
+    }
+  },
+  watch: {
+    user: function (val) {
+      this.name.value = val.displayName
+      this.bio.value = val.bio
+      this.avatar.value = val.avatar
+    }
   }
 }
 </script>

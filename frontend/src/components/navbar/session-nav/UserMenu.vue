@@ -6,14 +6,14 @@
   >
 
       <template v-slot:activator="{ on, attrs }">
-        <v-avatar v-bind="attrs" v-on="on">
+        <v-avatar v-bind="attrs" color="red" v-on="on">
           <v-img
-            v-if="user.picture"
-            :src="user.picture"
+            v-if="user.avatar"
+            :src="user.avatar"
             :alt="user.displayName"
             size="24"
           ></v-img>
-          <span v-else>ZE</span>
+          <span v-else style="color: white">{{ initialLetter }}</span>
         </v-avatar>
       </template>
 
@@ -23,14 +23,14 @@
           class="pa-5 mb-2"
         >
           <router-link to="profile">
-            <v-avatar>
+            <v-avatar color="red">
               <v-img
-                v-if="user.picture"
-                :src="user.picture"
+                v-if="user.avatar"
+                :src="user.avatar"
                 :alt="user.displayName"
                 size="50"
               ></v-img>
-              <span v-else>ZE</span>
+              <span v-else style="color: white">{{ initialLetter }}</span>
             </v-avatar>
             <span class="ml-2" style="color: black">{{ user.displayName }}</span>
           </router-link>
@@ -81,7 +81,7 @@ export default {
       return this.$store.state.user
     },
     initialLetter () {
-      return ''
+      return this.user.displayName.match(/[A-Z]/g).join('')
     }
   },
   methods: {

@@ -26,7 +26,7 @@ const FacebookAuth = new FacebookStrategy({
       givenName: profile.name.givenName,
       familyName: profile.name.familyName,
       email: profile.emails[0].value,
-      picture: profile.photos[0].value
+      avatar: profile.photos[0].value
     }).save()
   }
   console.log(user)

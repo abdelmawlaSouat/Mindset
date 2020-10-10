@@ -80,11 +80,15 @@ class Authentication {
       authenticated: true,
       message: 'User has authenticated.',
       user: {
+        id: req.user._id,
         displayName: req.user.displayName,
         email: req.user.email,
         familyName: req.user.familyName,
         givenName: req.user.givenName,
-        picture: req.user.picture
+        avatar: req.user.avatar,
+        bio: req.user.bio,
+        newsletters: req.user.newsletters,
+        socialNotification: req.user.socialNotification
       }
     })
   }

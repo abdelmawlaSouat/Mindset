@@ -1,19 +1,19 @@
 <template>
   <v-container class="home">
-    <Authentication v-if="!this.$store.state.authenticated" />
-    <Articles v-else />
+    <AuthenticationPage v-if="!this.$store.state.authenticated" />
+    <ArticlesPage v-else />
   </v-container>
 </template>
 
 <script>
-import Authentication from './AuthenticationPage'
-import Articles from './ArticlesPage'
+import AuthenticationPage from './AuthenticationPage'
+import ArticlesPage from './ArticlesPage'
 
 export default {
   name: 'Home',
   components: {
-    Articles,
-    Authentication
+    ArticlesPage,
+    AuthenticationPage
   }
 }
 </script>
